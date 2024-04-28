@@ -4,12 +4,6 @@
 //
 // ***************************************************************
 class FizzBuzz {
-private:
-    int n;
-    int mCurrNum;
-    std::condition_variable mCondVar;
-    std::mutex mMutex;
-
 public:
     FizzBuzz( int n ) 
     {
@@ -72,6 +66,12 @@ public:
             mCondVar.notify_all();
         }
     } // end of number
+
+private:
+    int n;
+    int mCurrNum;
+    std::condition_variable mCondVar;
+    std::mutex mMutex;
 }; // end of Solution class
 
 // ***************************************************************
