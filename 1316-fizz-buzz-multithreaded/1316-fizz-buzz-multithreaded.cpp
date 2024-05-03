@@ -1,158 +1,126 @@
-// ***************************************************************
-//
-// Mutex implementation, multi core processor
-//
-// ***************************************************************
 class FizzBuzz {
+private:
+    // Value to count up to
+    int n;
+
+    // Count up until mCounter == n [1,n]
+    int mCounter{1};
+
+    // Mutex for individual threads to grab when entering critical sections
+    std::mutex mMutex;
+
+    // Use this to wait until it's this threads turn
+    std::condition_variable mCondVar;
+
 public:
-    FizzBuzz( int n ) 
-    {
+    FizzBuzz(int n) {
         this->n = n;
-        this->mCurrNum = 1;
-    }
+    } // end of FizzBuzz parameterized constructor
 
     // printFizz() outputs "fizz".
-    void fizz( function<void()> printFizz ) 
-    {
-        while ( true ) 
+    void fizz(function<void()> printFizz) {
+        // loop through the range to be printed [1,n]
+        while ( true )
         {
-            unique_lock<mutex> lock( mMutex );
-            mCondVar.wait( lock, [ & ]{ return ( mCurrNum % 3 == 0 && mCurrNum % 5 != 0) || mCurrNum > n; } );
-            if ( mCurrNum > n ) return;
+            // this thread grabs the mutex
+            std::unique_lock<std::mutex> unq_lock( mMutex );
+            
+            // Wait here until mCounter is divisible by 3 and not 5
+            mCondVar.wait( unq_lock, [ this ](){ return ( mCounter % 3 == 0 && mCounter % 5 != 0 ) || mCounter > n; } );
+
+            // Don't print if we're already past the final print
+            if ( mCounter > n ) return;
+
+            // Output "fizz" - condition satisfied
             printFizz();
-            ++mCurrNum;
+
+            // Increment counter before exiting critical section
+            mCounter++;
+
+            // Notify condition variable to check the lambda function again
             mCondVar.notify_all();
-        }
+
+        } // end of infinite loop
+        
     } // end of fizz
 
     // printBuzz() outputs "buzz".
-    void buzz( function<void()> printBuzz ) 
-    {
-        while ( true ) 
+    void buzz(function<void()> printBuzz) {
+
+        // loop through the range to be printed [1,n]
+        while ( true )
         {
-            unique_lock<mutex> lock( mMutex );
-            mCondVar.wait( lock, [ & ]{ return ( mCurrNum % 3 != 0 && mCurrNum % 5 == 0) || mCurrNum > n; } );
-            if ( mCurrNum > n ) return;
+            // this thread grabs the mutex
+            std::unique_lock<std::mutex> unq_lock( mMutex );
+            
+            // Wait here until mCounter is divisible by 5 and not 3
+            mCondVar.wait( unq_lock, [ this ](){ return ( mCounter % 3 != 0 && mCounter % 5 == 0 ) || mCounter > n; } );
+
+            // Don't print if we're already past the final print
+            if ( mCounter > n ) return;
+
+            // Output "buzz" - condition satisfied
             printBuzz();
-            ++mCurrNum;
+
+            // Increment counter before exiting critical section
+            mCounter++;
+
+            // Notify condition variable to check the lambda function again
             mCondVar.notify_all();
-        }
+
+        } // end of infinite loop
     } // end of buzz
 
     // printFizzBuzz() outputs "fizzbuzz".
-	void fizzbuzz( function<void()> printFizzBuzz ) 
-    {
-        while ( true ) 
+	void fizzbuzz(function<void()> printFizzBuzz) {
+        // loop through the range to be printed [1,n]
+        while ( true )
         {
-            unique_lock<mutex> lock( mMutex );
-            mCondVar.wait( lock, [ & ]{ return ( mCurrNum % 3 == 0 && mCurrNum % 5 == 0) || mCurrNum > n; } );
-            if ( mCurrNum > n ) return;
+            // this thread grabs the mutex
+            std::unique_lock<std::mutex> unq_lock( mMutex );
+            
+            // Wait here until mCounter is divisible by 3 and 5
+            mCondVar.wait( unq_lock, [ this ](){ return ( mCounter % 3 == 0 && mCounter % 5 == 0 ) || mCounter > n; } );
+
+            // Don't print if we're already past the final print
+            if ( mCounter > n ) return;
+
+            // Output "fizzbuzz" - condition satisfied
             printFizzBuzz();
-            ++mCurrNum;
+
+            // Increment counter before exiting critical section
+            mCounter++;
+
+            // Notify condition variable to check the lambda function again
             mCondVar.notify_all();
-        }
+
+        } // end of infinite loop
+        
     } // end of fizzbuzz
 
     // printNumber(x) outputs "x", where x is an integer.
-    void number( function<void( int )> printNumber ) 
-    {
-        while ( true ) 
+    void number(function<void(int)> printNumber) {
+        // loop through the range to be printed [1,n]
+        while ( true )
         {
-            unique_lock<mutex> lock( mMutex );
-            mCondVar.wait( lock, [ & ]{ return ( mCurrNum % 3 != 0 && mCurrNum % 5 != 0) || mCurrNum > n; } );
-            if ( mCurrNum > n ) return;
-            printNumber( mCurrNum );
-            ++mCurrNum;
+            // this thread grabs the mutex
+            std::unique_lock<std::mutex> unq_lock( mMutex );
+            
+            // Wait here until mCounter is not divisible by 3 or 5
+            mCondVar.wait( unq_lock, [ this ](){ return ( mCounter % 3 != 0 && mCounter % 5 != 0 ) || mCounter > n; } );
+
+            // Don't print if we're already past the final print
+            if ( mCounter > n ) return;
+
+            // Output the number - condition satisfied
+            printNumber( mCounter );
+
+            // Increment counter before exiting critical section
+            mCounter++;
+
+            // Notify condition variable to check the lambda function again
             mCondVar.notify_all();
-        }
-    } // end of number
 
-private:
-    int n;
-    int mCurrNum;
-    std::condition_variable mCondVar;
-    std::mutex mMutex;
-}; // end of Solution class
-
-// ***************************************************************
-//
-// Atomic integer implementation, single core processor
-//
-// ***************************************************************
-// class FizzBuzz {
-// private:
-//     int n;
-//     std::atomic <int> mAtomicInt{1};
-
-// public:
-//     FizzBuzz( int n ) {
-//         this->n = n;
-//     }
-
-//     // printFizz() outputs "fizz".
-//     void fizz( function<void()> printFizz ) {
-//         // Printing different outputs from 1 to n
-//         while ( mAtomicInt <= n )
-//         {
-//             if ( mAtomicInt % 3 == 0 && mAtomicInt % 5 != 0 )
-//             {
-//                 printFizz();
-//                 mAtomicInt++;
-//             }
-//             else
-//             {
-//                 // Want atomic
-//                 std::this_thread::yield();
-//             }
-//         }
-//     } // end of fizz
-
-//     // printBuzz() outputs "buzz".
-//     void buzz( function<void()> printBuzz ) {
-//         while ( mAtomicInt <= n )
-//         {
-//             if ( mAtomicInt % 3 != 0 && mAtomicInt % 5 == 0 )
-//             {
-//                 printBuzz();
-//                 mAtomicInt++;
-//             }
-//             else
-//             {
-//                 std::this_thread::yield();
-//             }
-//         }
-//     } // end of buzz
-
-//     // printFizzBuzz() outputs "fizzbuzz".
-// 	void fizzbuzz( function<void()> printFizzBuzz ) {
-//         while ( mAtomicInt <= n )
-//         {
-//             if ( mAtomicInt % 15 == 0 )
-//             {
-//                 printFizzBuzz();
-//                 mAtomicInt++;
-//             }
-//             else
-//             {
-//                 std::this_thread::yield();
-//             }
-//         }
-//     } // end of fizzbuzz
-
-//     // printNumber(x) outputs "x", where x is an integer.
-//     void number( function<void( int )> printNumber ) 
-//     {
-//         while ( mAtomicInt <= n )
-//         {
-//             if ( mAtomicInt % 3 != 0 && mAtomicInt % 5 != 0 )
-//             {
-//                 printNumber( mAtomicInt );
-//                 mAtomicInt++;
-//             }
-//             else
-//             {
-//                 std::this_thread::yield();
-//             }
-//         }
-//     } // end of number
-// }; // end of Solution class
+        } // end of infinite loop
+    }
+}; // end of FizzBuzz class
