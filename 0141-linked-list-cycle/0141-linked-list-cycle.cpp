@@ -13,6 +13,8 @@ public:
         if ( head == nullptr ) return false;
         ListNode* slow{ head };
         ListNode* fast{ head };
+
+        // Fast pointer iterates by 2, slow by 1, if cycle they will land on same node
         while ( fast->next != nullptr && fast->next->next != nullptr )
         {
             slow = slow->next;
@@ -21,5 +23,5 @@ public:
             if ( slow == fast ) return true;
         }
         return false;
-    }
-};
+    } // end of has Cycle
+}; // end of Solution class
