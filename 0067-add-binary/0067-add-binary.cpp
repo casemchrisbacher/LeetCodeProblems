@@ -16,11 +16,10 @@ class Solution {
             case 3:
                 carry = true;
                 return '1';
-                break;
             default:
                 break;
         }
-        return ' ';
+        return '?'; // will never get here
     } // end of binaryAddr
 
 public:
