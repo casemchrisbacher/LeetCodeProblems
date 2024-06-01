@@ -15,16 +15,16 @@ private:
     int maxDepth( TreeNode* pNode, int& rCurMax )
     {
         if ( pNode == nullptr ) return 0;
-        int left_width = maxDepth( pNode->left, rCurMax ) + 1;
-        int right_width = maxDepth( pNode->right, rCurMax ) + 1;
+        int left_width = maxDepth( pNode->left, rCurMax );
+        int right_width = maxDepth( pNode->right, rCurMax );
         rCurMax = std::max( rCurMax, right_width + left_width );
-        return std::max( left_width, right_width );
+        return std::max( left_width, right_width ) + 1;
     } // end of maxDepth
 public:
     int diameterOfBinaryTree( TreeNode* pRoot )
     {
         int cur_max{-1};
         maxDepth( pRoot, cur_max );
-        return cur_max - 2;
+        return cur_max;
     } // end of diameterOfBinaryTree
 }; // end of Solution class
