@@ -2,12 +2,12 @@ class Solution {
 public:
     bool backspaceCompare( string s, string t )
     {
-        // if ( s.length() != t.length() ) return false;
         int s_hashtag{0};
         int t_hashtag{0};
         int s_ind = s.length() - 1;
         int t_ind = t.length() - 1;
 
+        // iterate backwards, counting backspaces
         while ( s_ind >= 0 || t_ind >= 0 )
         {
             while ( s_ind >= 0 )
@@ -34,5 +34,5 @@ public:
             t_ind--;
         }
         return true;
-    }
-};
+    } // end of backspaceCompare
+}; // end of Solution class
