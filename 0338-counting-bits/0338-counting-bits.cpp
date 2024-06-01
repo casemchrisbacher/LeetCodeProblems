@@ -2,25 +2,14 @@ class Solution {
 public:
     std::vector<int> countBits( int n )
     {
-        std::vector<int> bits( n+1, 0 );
+        std::vector<int> bits( n+1 );
+        if ( n == 0 ) return bits;
+        
+        bits[ 1 ] = 1;
 
-        while ( n > 0 )
+        for ( int ind = 2; ind <= n; ind++ )
         {
-            if ( bits[ n ] != 0 )
-            {
-                n--;
-                continue;
-            }
-
-            int temp{ n };
-            int bit_cnt{ 0 };
-            while ( temp > 0 )
-            {
-                if ( temp % 2 == 1 ) bit_cnt++;
-                temp /= 2;
-            }
-            bits[ n ] = bit_cnt;
-            n--;
+            bits[ ind ] = ( ind % 2 ) + bits[ ind / 2 ];
         }
         return bits;
     }
