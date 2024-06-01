@@ -25,6 +25,7 @@ public:
         ListNode* curr{ slow };
         ListNode* next_node{ nullptr };
 
+        // Reverse half of the linked list
         while ( curr != nullptr )
         {
             next_node = curr->next;
@@ -33,14 +34,13 @@ public:
             curr = next_node;
         }
 
+        // compare first half with reversed second half
         while ( prev != nullptr && head != nullptr )
         {
             if ( prev->val != head->val )
             {
                 return false;
             }
-            std::cout << "head " << std::to_string( head->val ) << std::endl;
-            std::cout << "prev " << std::to_string( prev->val ) << std::endl;
             prev = prev->next;
             head = head->next;
         }
