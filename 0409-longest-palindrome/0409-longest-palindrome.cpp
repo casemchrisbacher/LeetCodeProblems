@@ -16,6 +16,7 @@ public:
         {
             num_in_pal += char_count_pair.second - ( char_count_pair.second % 2 );
         }
+        // if there was a letter left out, the sizes wont be the same
         return num_in_pal + !( num_in_pal == s.length() );
-    }
-};
+    } // end of longestPalindrome
+}; // end of Solution class
