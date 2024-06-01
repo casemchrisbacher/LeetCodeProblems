@@ -11,18 +11,11 @@
  */
 class Solution {
 public:
-    // DFS looking for the lowest depth
-    int maxDepth( TreeNode* root )
-    {
-        // base case
-        if ( root == nullptr )
-        {
-            return 0;
-        }
-        // get to the bottom, inc return by one every time
+    int maxDepth( TreeNode* root ) {
+        if ( root == nullptr ) return 0;
         int left = maxDepth( root->left ) + 1;
-        int right = maxDepth( root-> right ) + 1;
+        int right = maxDepth( root->right ) + 1;
 
-        return max( left, right );
-    } // end of maxDepth
-}; // end of Solution class
+        return std::max( left, right );
+    }
+};
