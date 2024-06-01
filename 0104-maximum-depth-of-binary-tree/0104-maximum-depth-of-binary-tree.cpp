@@ -11,11 +11,13 @@
  */
 class Solution {
 public:
-    int maxDepth( TreeNode* root ) {
-        if ( root == nullptr ) return 0;
-        int left = maxDepth( root->left ) + 1;
-        int right = maxDepth( root->right ) + 1;
+    // DFS to find the max depth of a binary tree
+    int maxDepth( TreeNode* pNode ) {
+        if ( pNode == nullptr ) return 0;    // base case
+
+        int left = maxDepth( pNode->left ) + 1;
+        int right = maxDepth( pNode->right ) + 1;
 
         return std::max( left, right );
-    }
-};
+    } // end of maxDepth
+}; // end of Solution class
