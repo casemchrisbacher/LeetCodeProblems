@@ -4,20 +4,16 @@ public:
     {
         if ( x < 0 ) return false;
 
-        std::vector<int> digits;
+        long long reverse{ 0 };
+        long long x_copy{ x };
         while ( x > 0 )
         {
-            digits.push_back( x % 10 );
+            reverse *= 10;
+            reverse += x % 10;
             x /= 10;
         }
-        int left = 0;
-        int right = digits.size() - 1;
-        while ( left < right )
-        {
-            if ( digits[ left ] != digits[ right ] ) return false;
-            left++; right--;
-        }
-        return true;
+        
+        return x_copy == reverse;
         
     } // end of isPalindrome
 }; // end of Solution class
