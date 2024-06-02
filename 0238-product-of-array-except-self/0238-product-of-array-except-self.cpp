@@ -2,44 +2,21 @@ class Solution {
 public:
     vector<int> productExceptSelf( vector<int>& nums )
     {
-        int num_zeros{0};
-        int product{1};
+        const int NUM_SIZE = nums.size();
+        std::vector<int> products( NUM_SIZE, 1 );
 
-        for ( const int & num : nums )
+        for ( int ind = 1; ind < NUM_SIZE; ind++ )
         {
-            if ( num == 0 )
-            {
-                num_zeros++;
-            }
-            else
-            {
-                product *= num;
-            }
+            products[ ind ] = nums[ ind - 1 ] * products[ ind - 1 ];
         }
-        
-        if ( num_zeros == 0 )
+        int right{1};
+
+        for ( int ind = NUM_SIZE - 1; ind >= 0; ind-- )
         {
-            for( int & num : nums )
-            {
-                num = product / num;
-            }
-            return nums;
-        }
-        else if ( num_zeros == 1 )
-        {
-            for( int & num : nums )
-            {
-                if ( num == 0 )
-                {
-                    num = product;
-                }
-                else
-                {
-                    num = 0;
-                }
-            }
-            return nums;
-        }
-        return vector<int>( nums.size(), 0 );
+            products[ ind ] *= right;
+            right = right * nums[ ind ];
+        }   
+        return products;
+
     } // end of productExceptSelf
 }; // end of Solution class
