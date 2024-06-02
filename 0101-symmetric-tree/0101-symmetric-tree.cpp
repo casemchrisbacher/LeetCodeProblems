@@ -10,31 +10,20 @@
  * };
  */
 class Solution {
-    // DFS of both sides of the tree, comparing at each node
-    bool doubleDfs( TreeNode* pLeftSide, TreeNode* pRightSide )
+private:
+    // Input left and right side of tree, check if they're the same
+    bool isSymDfs( TreeNode* pNode1, TreeNode* pNode2 )
     {
-        // Base case if they're both null
-        if ( pLeftSide == nullptr && pRightSide == nullptr )
-        {
-            return true;
-        }
-        // Alternative base case if one is null, tree isn't symetrical
-        if ( pLeftSide == nullptr || pRightSide == nullptr )
-        {
-            return false;
-        }
-        // If they're not equal return false
-        if ( pLeftSide->val != pRightSide->val )
-        {
-            return false;
-        }
-        // Recursively call function, Inorder and Postorder
-        return doubleDfs( pLeftSide->left, pRightSide->right ) && doubleDfs( pLeftSide->right, pRightSide->left );
-    } // end of doubleDfs
+        if ( pNode1 == nullptr && pNode2 == nullptr ) return true;  // both null, still symmetric
+        if ( pNode1 == nullptr || pNode2 == nullptr ) return false; // one is null - not sym
+        if ( pNode1->val != pNode2->val ) return false;             // different values, not sym
+
+        return ( isSymDfs( pNode1->left, pNode2->right ) && isSymDfs( pNode1->right, pNode2->left ) );
+    } // end of is SymDfs
 public:
-    // Default function for problem - just calls my helper function
+    // Determine if binary tree is symmetric
     bool isSymmetric( TreeNode* root )
     {
-        return doubleDfs( root->left, root->right );
-    } // end of is Symmetric
+        return isSymDfs( root->left, root->right );
+    } // end of isSymmetric
 }; // end of Solution class
