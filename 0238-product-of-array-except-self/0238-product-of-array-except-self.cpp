@@ -1,53 +1,45 @@
 class Solution {
 public:
-    // Sum of all integers in an array except itself
     vector<int> productExceptSelf( vector<int>& nums )
     {
-        int total_sum{1};   // Init to 1, multiplying so we don't want a zero
-        int zero_count{0};  // Counter for how many zeros are in vector
+        int num_zeros{0};
+        int product{1};
 
-        // Loop through vector, get a product of all of it, excluding zeros
-        for ( const auto & num : nums )
+        for ( const int & num : nums )
         {
-            // Multiply running sum if not a zero
-            if ( num != 0 )
+            if ( num == 0 )
             {
-                total_sum *= num;
+                num_zeros++;
             }
-            // Mark if we found a zero
             else
             {
-                zero_count++;
+                product *= num;
             }
         }
-
-        // If more than one is zero, the whole vector is going to be zero, just return here
-        if ( zero_count > 1 )
+        
+        if ( num_zeros == 0 )
         {
-            return std::vector<int>( nums.size(), 0 );
-        }
-
-        // Loop through again to adjust the vals, 
-        for ( auto & num : nums )
-        {
-            // If 1 zero is present - all numbers are zero except
-            // for the index where the zero was originally
-            if ( num != 0 )
+            for( int & num : nums )
             {
-                if ( zero_count == 1 )
+                num = product / num;
+            }
+            return nums;
+        }
+        else if ( num_zeros == 1 )
+        {
+            for( int & num : nums )
+            {
+                if ( num == 0 )
                 {
-                    num = 0;
+                    num = product;
                 }
                 else
                 {
-                    num = total_sum / num;
+                    num = 0;
                 }
             }
-            else
-            {
-                 num = total_sum;
-            }
+            return nums;
         }
-        return nums;
+        return vector<int>( nums.size(), 0 );
     } // end of productExceptSelf
 }; // end of Solution class
