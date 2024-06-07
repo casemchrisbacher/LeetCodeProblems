@@ -5,7 +5,8 @@ public:
         const int NUM_SIZE = nums.size();
         int l = 0;
         int r = NUM_SIZE - 1;
-        std::vector<int> squares;
+        int top = NUM_SIZE - 1;
+        std::vector<int> squares( NUM_SIZE );
 
         while ( l <= r )
         {
@@ -14,16 +15,15 @@ public:
 
             if ( right_sq < left_sq )
             {
-                squares.push_back( left_sq );
+                squares[ top-- ] = left_sq;
                 l++;
             }
             else
             {
-                squares.push_back( right_sq );
+                squares[ top-- ] = right_sq;
                 r--;
             }
         }
-        std::reverse( squares.begin(), squares.end() );
         return squares;
     }
 };
