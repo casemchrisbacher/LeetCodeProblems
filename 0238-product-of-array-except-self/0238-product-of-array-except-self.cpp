@@ -3,20 +3,20 @@ public:
     vector<int> productExceptSelf( vector<int>& nums )
     {
         const int NUM_SIZE = nums.size();
-        std::vector<int> products( NUM_SIZE, 1 );
+        std::vector<int> left_prods( NUM_SIZE );
+        left_prods[ 0 ] = 1;
 
         for ( int ind = 1; ind < NUM_SIZE; ind++ )
         {
-            products[ ind ] = nums[ ind - 1 ] * products[ ind - 1 ];
+            left_prods[ ind ] = left_prods[ ind - 1 ] * nums[ ind - 1 ];
         }
-        int right{1};
 
+        int right_prods = 1;
         for ( int ind = NUM_SIZE - 1; ind >= 0; ind-- )
         {
-            products[ ind ] *= right;
-            right = right * nums[ ind ];
-        }   
-        return products;
-
+            left_prods[ ind ] *= right_prods;
+            right_prods *= nums[ ind ];
+        }
+        return left_prods;
     } // end of productExceptSelf
 }; // end of Solution class
