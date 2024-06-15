@@ -11,40 +11,31 @@
  */
 class Solution {
 public:
-    vector<int> rightSideView(TreeNode* root) 
+    vector<int> rightSideView( TreeNode* root )
     {
-        // Edge case for BFS
-        if ( root == nullptr )
-        {
-            return {};
-        }
-        vector<int> far_right;  // output vector
-        queue<TreeNode*> q;     // bfs Queue
-        q.push( root );         // push back the root
-        
-        // standard bfs
+        std::vector<int> right;
+        if ( root == nullptr ) return right;
+
+        std::queue<TreeNode*> q;
+        q.push( root );
+
         while ( !q.empty() )
         {
-            int q_size = q.size();  // queue size, changes throughout for loop
-            int last_val{0};        // last val loop sets this to is the far right
-            for ( int level_ind = 0; level_ind < q_size; level_ind++ )
+            int Q_SIZE = q.size();
+            for ( int i = 0; i < Q_SIZE; i++ )
             {
-                TreeNode* cur_node = q.front();
+                TreeNode* top_node = q.front();
                 q.pop();
-                last_val = cur_node->val;
-
-                if ( cur_node->left != nullptr )
+                if ( top_node->left )
+                    q.push( top_node->left );
+                if ( top_node->right )
+                    q.push( top_node->right );
+                if ( i == Q_SIZE - 1 )
                 {
-                    q.push( cur_node->left );
-                }
-                if ( cur_node->right != nullptr )
-                {
-                    q.push( cur_node->right );
+                    right.push_back( top_node->val );
                 }
             }
-            far_right.push_back( last_val );
         }
-        return far_right;
-        
-    } // end of rightSideView
-}; // end of Solution Class
+        return right;
+    }
+};
