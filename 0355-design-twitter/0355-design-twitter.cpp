@@ -1,30 +1,9 @@
-class Account {
-public:
-    Account() = delete;
-    Account( int id ) :  mUserId( id ) {}
-    int mUserId{0};
-    std::set<int> mFollowing;
-};
-
 class Twitter {
-    std::unordered_map<int, Account*> mAccounts;
+    std::unordered_map<int, std::unordered_set<int>> mAccounts;
     std::vector<std::pair<int, int>> mTwitterFeed;
 public:
     Twitter() 
     {
-        for ( int i = 0; i < 500; i++ )
-        {
-            mAccounts[ i ] = new Account( i );
-            mAccounts[ i ]->mFollowing.insert( i );
-        }
-    }
-
-    ~Twitter()
-    {
-        for ( auto & account : mAccounts )
-        {
-            delete account.second;
-        }
     }
 
     void postTweet(int userId, int tweetId) 
@@ -37,7 +16,7 @@ public:
         std::vector<int> tweets;
         for ( int tweet_ind = mTwitterFeed.size() - 1; tweet_ind >= 0 && tweets.size() < 10; tweet_ind-- )
         {
-            if ( mAccounts[ userId ]->mFollowing.count( mTwitterFeed[ tweet_ind ].first ) )
+            if ( mAccounts[ userId ].count( mTwitterFeed[ tweet_ind ].first ) || userId == mTwitterFeed[ tweet_ind ].first )
             {
                 tweets.push_back( mTwitterFeed[ tweet_ind ].second );
             }
@@ -47,12 +26,12 @@ public:
     
     void follow( int followerId, int followeeId ) 
     {
-        mAccounts[ followerId ]->mFollowing.insert( followeeId );
+        mAccounts[ followerId ].insert( followeeId );
     }
     
     void unfollow(int followerId, int followeeId) 
     {
-        mAccounts[ followerId ]->mFollowing.erase( followeeId );
+        mAccounts[ followerId ].erase( followeeId );
     }
 };
 
