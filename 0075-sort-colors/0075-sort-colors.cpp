@@ -2,49 +2,27 @@ class Solution {
 public:
     void sortColors( vector<int>& nums )
     {
-        int one_cnt{ 0 };
-        int left{ 0 };
-        int right = nums.size() - 1;
+        int mid{ 0 };
+        int low{ 0 };
+        int high = nums.size() - 1;
 
-        for ( int ind = 0; ind <= right; ind++ )
+        while ( mid <= high )
         {
-            while ( nums[ right ] == 2 )
+            if( nums[ mid ] == 0 )
             {
-                right--;
-                if ( ind > right )
-                {
-                    for ( int i = 0; i < one_cnt; i++ )
-                    {
-                        nums [ left + i ] = 1;
-                    }
-                    return;
-                }
+                std::swap( nums[ low ], nums[ mid ] );
+                low++;
+                mid++;
             }
-            switch( nums[ ind ] )
+            else if ( nums[ mid ] == 1 )
             {
-                case 0:
-                    nums[ left++ ] = 0;
-                    break;
-                case 1:
-                    one_cnt++;
-                    break;
-                case 2:
-                    if ( nums[ right ] == 0 )
-                    {
-                        nums[ left++ ] = 0;
-                        nums[ right-- ] = 2;
-                    }
-                    else
-                    {
-                        one_cnt++;
-                        nums[ right-- ] = 2;
-                    }
-                    break;
+                mid++;
             }
-        }
-        for ( int i = 0; i < one_cnt; i++ )
-        {
-            nums [ left + i ] = 1;
+            else
+            {
+                std::swap( nums[ high ], nums[ mid ] );
+                high--;
+            }
         }
     }
 };
