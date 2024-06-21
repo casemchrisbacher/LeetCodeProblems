@@ -15,7 +15,6 @@ public:
     {
         int l{ 0 };
         int r = map[ key ].size() - 1;
-        string closest;
 
         while ( l <= r )
         {
@@ -26,7 +25,6 @@ public:
             }
             if ( map[ key ][ mid ].first < timestamp )
             {
-                closest = map[ key ][ mid ].second;
                 l = mid + 1;
             }
             else if ( map[ key ][ mid ].first > timestamp )
@@ -34,7 +32,8 @@ public:
                 r = mid - 1;
             }
         }
-        return closest;
+        if ( r == -1 ) return "";
+        else return map[ key ][ r ].second;
     } // end of get
 };
 
