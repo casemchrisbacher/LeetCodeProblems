@@ -2,24 +2,22 @@ class Solution {
 public:
     int lengthOfLongestSubstring( string s )
     {
-        int slow{0};
-        int max{0};
-        const int S_LEN = s.size();
-        std::vector<int> letter_cnt( 128, 0 );
+       int slow{0};
+       int max{0};
+       const int S_LEN = s.length();
 
-        for ( int ind = 0; ind < S_LEN; ind++ )
+       std::set<char> letters_in_substr;
+
+        for ( int fast = 0; fast < S_LEN; fast++ )
         {
-            // use the ASCII as integers for indexing
-            letter_cnt[ s[ ind ] ]++;
-
-            // if there is more than one of that letter in vector
-            // pop letters off the back of the vector until there is but one
-            while ( letter_cnt[ s[ ind ] ] > 1 ) 
+            while ( letters_in_substr.count( s[ fast ] ) )
             {
-                letter_cnt[ s[ slow ] ]--;
+                letters_in_substr.erase( s[slow ] );
                 slow++;
             }
-            max = std::max( ind - slow + 1, max );
+            letters_in_substr.insert( s[ fast ] );
+            max = std::max( max, fast - slow + 1 );
+
         }
         return max;
     } // end of lengthOfLongestSubstring
