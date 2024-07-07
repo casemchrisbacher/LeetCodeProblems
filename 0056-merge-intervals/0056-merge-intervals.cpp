@@ -3,21 +3,20 @@ public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) 
     {
         std::sort( intervals.begin(), intervals.end() );
-        std::vector<int> cur = intervals[ 0 ];
-        std::vector<std::vector<int>> merged;
-        for ( const auto & range : intervals )
+
+        std::vector<std::vector<int>> merged = { intervals[0] };
+
+        for ( int i = 0; i < intervals.size(); i++ )
         {
-            if ( range[ 0 ] <= cur[ 1 ] )
+            if ( merged.back()[0] >= intervals[i][0] || merged.back()[1] >= intervals[i][0] )
             {
-                cur[ 1 ] = std::max( range[ 1 ], cur[ 1 ] );
+                merged.back() = { std::min( merged.back()[0], intervals[i][0] ), std::max( merged.back()[1], intervals[i][1] ) };
             }
             else
             {
-                merged.push_back( cur );
-                cur = range;
+                merged.push_back( intervals[i] );
             }
         }
-        merged.push_back( cur );
         return merged;
-    }
+    } // end of merge
 };
