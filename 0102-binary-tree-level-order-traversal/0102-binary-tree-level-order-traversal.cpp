@@ -15,32 +15,26 @@ public:
     {
         vector<vector<int>> levels;
         vector<int> one_level;
-        if ( root == nullptr ) return levels;
-
         queue<TreeNode*> q;
+        if ( root == nullptr ) return levels;
         q.push( root );
 
         while ( !q.empty() )
         {
             const int Q_SIZE = q.size();
-
-            for ( int ind = 0; ind < Q_SIZE; ind++ )
+            for ( int i = 0; i < Q_SIZE; i++ )
             {
-                TreeNode* copy_node = q.front();
-                one_level.push_back( copy_node->val );
+                TreeNode* temp = q.front();
                 q.pop();
-                if ( copy_node->left != nullptr )
-                {
-                    q.push( copy_node->left );
-                }
-                if ( copy_node->right != nullptr )
-                {
-                    q.push( copy_node->right );
-                }
+                one_level.push_back( temp->val );
+
+                if ( temp->left != nullptr ) q.push( temp->left );
+                if ( temp->right != nullptr ) q.push( temp->right );
             }
             levels.push_back( one_level );
-            one_level.clear();
+            one_level = {};
         }
+
         return levels;
     } // end of levelOrder
 }; // end of Solution class
