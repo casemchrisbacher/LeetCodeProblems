@@ -3,6 +3,7 @@ private:
     int n;
     int counter{1};
     std::mutex mtx;
+    std::condition_variable mCondVar;
 
 public:
     FizzBuzz(int n) {
@@ -14,12 +15,13 @@ public:
         while ( counter <= n )
         {
             std::unique_lock<std::mutex> lock( mtx );
+
+            mCondVar.wait( lock, [ this ](){ return ( counter % 3 == 0 && counter % 5 != 0 ) || counter > n; } );
             if ( counter > n ) return;
-            if ( counter % 3 == 0 && counter % 5 != 0 )
-            {
-                printFizz();
-                counter++;
-            }
+            
+            printFizz();
+            counter++;
+            mCondVar.notify_all();
         }
     }
 
@@ -28,12 +30,13 @@ public:
         while ( counter <= n )
         {
             std::unique_lock<std::mutex> lock( mtx );
+
+            mCondVar.wait( lock, [ this ](){ return ( counter % 3 != 0 && counter % 5 == 0 ) || counter > n; } );
             if ( counter > n ) return;
-            if ( counter % 3 != 0 && counter % 5 == 0 )
-            {
-                printBuzz();
-                counter++;
-            }
+            
+            printBuzz();
+            counter++;
+            mCondVar.notify_all();
         }
     }
 
@@ -42,12 +45,13 @@ public:
         while ( counter <= n )
         {
             std::unique_lock<std::mutex> lock( mtx );
+
+            mCondVar.wait( lock, [ this ](){ return ( counter % 15 == 0 ) || counter > n; } );
             if ( counter > n ) return;
-            if ( counter % 15 == 0 )
-            {
-                printFizzBuzz();
-                counter++;
-            }
+            
+            printFizzBuzz();
+            counter++;
+            mCondVar.notify_all();
         }
     }
 
@@ -56,12 +60,13 @@ public:
         while ( counter <= n )
         {
             std::unique_lock<std::mutex> lock( mtx );
+
+            mCondVar.wait( lock, [ this ](){ return ( counter % 3 != 0 && counter % 5 != 0 ) || counter > n; } );
             if ( counter > n ) return;
-            if ( counter % 3 != 0 && counter % 5 != 0 )
-            {
-                printNumber(counter);
-                counter++;
-            }
+            
+            printNumber( counter );
+            counter++;
+            mCondVar.notify_all();
         }
     }
 };
