@@ -12,5 +12,6 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Concurrency
 |  |
 | ------- |
+| [1186-building-h2o](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/1186-building-h2o) |
 | [1316-fizz-buzz-multithreaded](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/1316-fizz-buzz-multithreaded) |
 <!---LeetCode Topics End-->
