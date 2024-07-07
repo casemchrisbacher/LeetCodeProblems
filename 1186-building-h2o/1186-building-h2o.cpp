@@ -1,48 +1,36 @@
 class H2O {
-    std::atomic <int> mNumHydro{ 0 };
-
-    std::mutex mMutex;
-    std::condition_variable mReadyForPrint;
+private:
+    std::mutex mtx;
+    std::condition_variable mCondVar;
+    std::atomic <int> mHydroCount{0};
 public:
     H2O() {
-        mNumHydro = 0;
-    } // end of H2O constructor
+        
+    }
 
-    void hydrogen( function<void()> releaseHydrogen )
+    void hydrogen(function<void()> releaseHydrogen) 
     {
-        // Create a lock for the condition variable wait
-        std::unique_lock uniq_lck( mMutex );
+        std::unique_lock<std::mutex> lock( mtx );
 
-        // wait on two H's and one O to be inputted (through checking atomic vars)
-        mReadyForPrint.wait( uniq_lck, [ & ](){ return ( mNumHydro < 2 ); } );
-
-        // increment the atomic int for hydro to know it's been called
-        ++mNumHydro;
+        mCondVar.wait( lock, [this](){ return ( mHydroCount < 2 ); } );
+        mHydroCount++;
 
         // releaseHydrogen() outputs "H". Do not change or remove this line.
         releaseHydrogen();
+        mCondVar.notify_all();
+    }
 
-        // notify all of the other threads to run the lambda function again
-        mReadyForPrint.notify_all();
-
-    } // end of hydrogen
-
-    void oxygen( function<void()> releaseOxygen )
+    void oxygen(function<void()> releaseOxygen) 
     {
-        // Create a lock for the condition variable wait
-        std::unique_lock uniq_lck( mMutex );
+        std::unique_lock<std::mutex> lock( mtx );
 
-        // wait on two H's and one O to be inputted (through checking atomic vars)
-        mReadyForPrint.wait( uniq_lck, [ & ](){ return ( mNumHydro >= 2 ); } );
-        
+        mCondVar.wait( lock, [this](){ return ( mHydroCount >= 2 ); } );
+
         // releaseOxygen() outputs "O". Do not change or remove this line.
         releaseOxygen();
-
-        // reset the hydrogen count to 0
-        mNumHydro = 0;
-
-        // notify all of the other threads to run the lambda function again
-        mReadyForPrint.notify_all();
-
-    } // end of oxygen
-}; // end of H2O class
+        
+        mHydroCount = 0;
+        mCondVar.notify_all();
+        
+    }
+};
