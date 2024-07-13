@@ -1,51 +1,30 @@
 class Solution {
 public:
-    // *******************************************************************************************************
-    // 2D Vector of Booleans Solution
-    // *******************************************************************************************************
-    bool isValidSudoku( vector<vector<char>>& board ) 
+    bool isValidSudoku(vector<vector<char>>& board) 
     {
-        // Get the board size for value calculations (Will always be 9)
-        const size_t BOARD_DIM = board.size();
+        std::vector<std::unordered_set<char>> squares( 9, std::unordered_set<char>() );
+        std::vector<std::unordered_set<char>> rows( 9, std::unordered_set<char>() );
+        std::vector<std::unordered_set<char>> cols( 9, std::unordered_set<char>() );
 
-        // booleans for each row, col, and square to determine if that number has been seen yet
-        std::vector<std::vector<bool>> in_row( BOARD_DIM, std::vector<bool>( BOARD_DIM, false ) );
-        std::vector<std::vector<bool>> in_column( BOARD_DIM, std::vector<bool>( BOARD_DIM, false ) );
-        std::vector<std::vector<bool>> in_square( BOARD_DIM, std::vector<bool>( BOARD_DIM, false ) );
-
-        // loop through entire grid O(m*n), for this problem O(9*9) = O(81) = O(1), but O(m*n) for all sizes
-        for ( size_t row_ind = 0; row_ind < BOARD_DIM; row_ind++ )
+        for ( int row_ind = 0; row_ind < board.size(); row_ind++ )
         {
-            for ( size_t col_ind = 0; col_ind < BOARD_DIM; col_ind++ )
+            for ( int col_ind = 0; col_ind < board[0].size(); col_ind++ )
             {
-                // "empty" spaces have periods, skip this iteration
-                if ( board[ row_ind ][ col_ind ] == '.' )
-                {
-                    continue;
-                }
-
-                // Convert the character to a valid index (numbers are [1,9], want [0,8] to fit in board dimensions)
-                size_t val_indx = board[ row_ind ][ col_ind ] - static_cast<int>( '0' ) - 1;
-
-                // Calculation to figure out which 3x3 square we're currently in
-                size_t square_ind = ( row_ind / 3 ) * 3 + ( col_ind / 3 );
-
-                // If that number has been logged in that row, column, or square - return false (invalid sudoku)
-                if ( in_row[ row_ind ][ val_indx ] || in_column[ col_ind ][ val_indx ] || in_square[ square_ind ][ val_indx ] )
+                if ( board[row_ind][col_ind] == '.' ) continue;
+                if ( rows[row_ind].count( board[row_ind][col_ind] ) || 
+                    cols[col_ind].count( board[row_ind][col_ind] ) || 
+                    squares[ ((row_ind / 3) * 3) + (col_ind / 3) ].count( board[row_ind][col_ind] ) )
                 {
                     return false;
                 }
                 else
                 {
-                    // Set flags in specific indexes to log this number
-                    in_row[ row_ind ][ val_indx ] = true;
-                    in_column[ col_ind ][ val_indx ] = true;
-                    in_square[ square_ind ][ val_indx ] = true;
+                    rows[row_ind].insert( board[row_ind][col_ind] );
+                    cols[col_ind].insert( board[row_ind][col_ind] );
+                    squares[ ((row_ind / 3) * 3) + (col_ind / 3) ].insert( board[row_ind][col_ind] );
                 }
-            } // end of column for loop
-        } // end of row for loop
-        
-        // Made it through the entire Sudoku
+            }
+        }
         return true;
-    } // end of isValidSudoku
-}; // end of Solution Class
+    }
+};
