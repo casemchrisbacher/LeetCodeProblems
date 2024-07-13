@@ -51,6 +51,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Linked List
 |  |
 | ------- |
+| [0019-remove-nth-node-from-end-of-list](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0019-remove-nth-node-from-end-of-list) |
 | [0146-lru-cache](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0146-lru-cache) |
 ## Design
 |  |
@@ -81,4 +82,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0035-search-insert-position](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0035-search-insert-position) |
+## Two Pointers
+|  |
+| ------- |
+| [0019-remove-nth-node-from-end-of-list](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0019-remove-nth-node-from-end-of-list) |
 <!---LeetCode Topics End-->
