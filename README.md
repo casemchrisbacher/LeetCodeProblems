@@ -7,6 +7,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0001-two-sum](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0001-two-sum) |
 | [0035-search-insert-position](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0035-search-insert-position) |
 | [0036-valid-sudoku](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0036-valid-sudoku) |
+| [0048-rotate-image](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0048-rotate-image) |
 | [0122-best-time-to-buy-and-sell-stock-ii](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0122-best-time-to-buy-and-sell-stock-ii) |
 | [0200-number-of-islands](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0200-number-of-islands) |
 | [0284-peeking-iterator](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0284-peeking-iterator) |
@@ -27,6 +28,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0036-valid-sudoku](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0036-valid-sudoku) |
+| [0048-rotate-image](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0048-rotate-image) |
 | [0200-number-of-islands](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0200-number-of-islands) |
 | [0498-diagonal-traverse](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0498-diagonal-traverse) |
 | [0733-flood-fill](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0733-flood-fill) |
@@ -90,4 +92,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0019-remove-nth-node-from-end-of-list](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0019-remove-nth-node-from-end-of-list) |
+## Math
+|  |
+| ------- |
+| [0048-rotate-image](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0048-rotate-image) |
 <!---LeetCode Topics End-->
