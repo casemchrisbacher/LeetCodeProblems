@@ -23,4 +23,12 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0498-diagonal-traverse](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0498-diagonal-traverse) |
+## String
+|  |
+| ------- |
+| [0020-valid-parentheses](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0020-valid-parentheses) |
+## Stack
+|  |
+| ------- |
+| [0020-valid-parentheses](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0020-valid-parentheses) |
 <!---LeetCode Topics End-->
