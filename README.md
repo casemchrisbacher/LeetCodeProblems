@@ -7,6 +7,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0001-two-sum](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0001-two-sum) |
 | [0036-valid-sudoku](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0036-valid-sudoku) |
 | [0122-best-time-to-buy-and-sell-stock-ii](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0122-best-time-to-buy-and-sell-stock-ii) |
+| [0284-peeking-iterator](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0284-peeking-iterator) |
 | [0498-diagonal-traverse](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0498-diagonal-traverse) |
 ## Hash Table
 |  |
@@ -52,8 +53,13 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0146-lru-cache](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0146-lru-cache) |
+| [0284-peeking-iterator](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0284-peeking-iterator) |
 ## Doubly-Linked List
 |  |
 | ------- |
 | [0146-lru-cache](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0146-lru-cache) |
+## Iterator
+|  |
+| ------- |
+| [0284-peeking-iterator](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0284-peeking-iterator) |
 <!---LeetCode Topics End-->
