@@ -5,12 +5,14 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0001-two-sum](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0001-two-sum) |
+| [0036-valid-sudoku](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0036-valid-sudoku) |
 | [0122-best-time-to-buy-and-sell-stock-ii](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0122-best-time-to-buy-and-sell-stock-ii) |
 | [0498-diagonal-traverse](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0498-diagonal-traverse) |
 ## Hash Table
 |  |
 | ------- |
 | [0001-two-sum](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0001-two-sum) |
+| [0036-valid-sudoku](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0036-valid-sudoku) |
 ## Concurrency
 |  |
 | ------- |
@@ -19,6 +21,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 ## Matrix
 |  |
 | ------- |
+| [0036-valid-sudoku](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0036-valid-sudoku) |
 | [0498-diagonal-traverse](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0498-diagonal-traverse) |
 ## Simulation
 |  |
