@@ -8,6 +8,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0035-search-insert-position](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0035-search-insert-position) |
 | [0036-valid-sudoku](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0036-valid-sudoku) |
 | [0048-rotate-image](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0048-rotate-image) |
+| [0073-set-matrix-zeroes](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0073-set-matrix-zeroes) |
 | [0122-best-time-to-buy-and-sell-stock-ii](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0122-best-time-to-buy-and-sell-stock-ii) |
 | [0200-number-of-islands](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0200-number-of-islands) |
 | [0284-peeking-iterator](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0284-peeking-iterator) |
@@ -19,6 +20,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0001-two-sum](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0001-two-sum) |
 | [0036-valid-sudoku](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0036-valid-sudoku) |
+| [0073-set-matrix-zeroes](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0073-set-matrix-zeroes) |
 | [0146-lru-cache](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0146-lru-cache) |
 ## Concurrency
 |  |
@@ -30,6 +32,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0036-valid-sudoku](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0036-valid-sudoku) |
 | [0048-rotate-image](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0048-rotate-image) |
+| [0073-set-matrix-zeroes](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0073-set-matrix-zeroes) |
 | [0200-number-of-islands](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0200-number-of-islands) |
 | [0498-diagonal-traverse](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0498-diagonal-traverse) |
 | [0661-image-smoother](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0661-image-smoother) |
