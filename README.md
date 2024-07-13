@@ -13,6 +13,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | ------- |
 | [0001-two-sum](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0001-two-sum) |
 | [0036-valid-sudoku](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0036-valid-sudoku) |
+| [0146-lru-cache](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0146-lru-cache) |
 ## Concurrency
 |  |
 | ------- |
@@ -43,4 +44,16 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0122-best-time-to-buy-and-sell-stock-ii](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0122-best-time-to-buy-and-sell-stock-ii) |
+## Linked List
+|  |
+| ------- |
+| [0146-lru-cache](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0146-lru-cache) |
+## Design
+|  |
+| ------- |
+| [0146-lru-cache](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0146-lru-cache) |
+## Doubly-Linked List
+|  |
+| ------- |
+| [0146-lru-cache](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0146-lru-cache) |
 <!---LeetCode Topics End-->
