@@ -1,19 +1,15 @@
 class Solution {
 private:
-    void islandRemoval( vector<vector<char>>& grid, int row, int col )
+    void islandRemoval( std::vector<std::vector<char>>& grid, int rowInd, int colInd )
     {
-        if ( row < 0 || col < 0 || row >= grid.size() || col >= grid[ 0 ].size() )
-        {
-            return;
-        }
-        if ( grid[ row ][ col ] == '1' )
-        {
-            grid[ row ][ col ] = '0';
-            islandRemoval( grid, row, col + 1 );
-            islandRemoval( grid, row, col - 1 );
-            islandRemoval( grid, row - 1, col );
-            islandRemoval( grid, row + 1, col );
-        }
+        if ( rowInd < 0 || colInd < 0 || rowInd >= grid.size() || colInd >= grid[0].size() || grid[rowInd][colInd] == '0' ) return;
+
+        grid[rowInd][colInd] = '0';
+
+        islandRemoval( grid, rowInd + 1, colInd );
+        islandRemoval( grid, rowInd - 1, colInd );
+        islandRemoval( grid, rowInd, colInd + 1 );
+        islandRemoval( grid, rowInd, colInd - 1 );
     } // end of islandRemoval
 
 public:
