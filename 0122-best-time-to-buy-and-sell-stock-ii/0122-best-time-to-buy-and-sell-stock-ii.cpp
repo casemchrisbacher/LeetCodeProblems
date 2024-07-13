@@ -2,22 +2,14 @@ class Solution {
 public:
     int maxProfit(vector<int>& prices) 
     {
-        int rolling_min{prices[0]};
-        int rolling_profit{0};
         int profit{0};
-        for ( const int price : prices )
+        for ( int i = 1; i < prices.size(); i++ )
         {
-            if ( ( price - rolling_min ) > rolling_profit )
+            if ( prices[i-1] < prices[i] )
             {
-                rolling_profit = ( price - rolling_min );
-            }
-            else
-            {
-                profit += rolling_profit;
-                rolling_profit = 0;
-                rolling_min = price;
+                profit += prices[i] - prices[i-1];
             }
         }
-        return (profit + rolling_profit);
+        return profit;
     }
 };
