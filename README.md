@@ -16,6 +16,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0498-diagonal-traverse](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0498-diagonal-traverse) |
 | [0661-image-smoother](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0661-image-smoother) |
 | [0733-flood-fill](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0733-flood-fill) |
+| [0864-image-overlap](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0864-image-overlap) |
 ## Hash Table
 |  |
 | ------- |
@@ -39,6 +40,7 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0498-diagonal-traverse](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0498-diagonal-traverse) |
 | [0661-image-smoother](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0661-image-smoother) |
 | [0733-flood-fill](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0733-flood-fill) |
+| [0864-image-overlap](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0864-image-overlap) |
 ## Simulation
 |  |
 | ------- |
