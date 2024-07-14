@@ -2,8 +2,8 @@ class Solution {
 public:
     int largestOverlap(vector<vector<int>>& img1, vector<vector<int>>& img2) 
     {
-        std::set<std::pair<int, int>> img1_coords;
-        std::set<std::pair<int, int>> img2_coords;
+        std::vector<std::pair<int, int>> img1_coords;
+        std::vector<std::pair<int, int>> img2_coords;
         const int SIZE = img1.size();
 
         for ( int y = 0; y < SIZE; y++ )
@@ -12,38 +12,22 @@ public:
             {
                 if ( img1[y][x] == 1 )
                 {
-                    img1_coords.insert({y,x});
+                    img1_coords.push_back({y,x});
                 }
                 if ( img2[y][x] == 1 )
                 {
-                    img2_coords.insert({y,x});
+                    img2_coords.push_back({y,x});
                 }
             }
         }
 
         int max{0};
-        std::set<std::pair<int,int>> translations;
-        for ( auto& img1_coord : img1_coords )
+        std::map<std::pair<int,int>, int> overlap;
+        for ( const auto& c1 : img1_coords )
         {
-            for ( auto& img2_coord : img2_coords )
+            for ( const auto& c2 : img2_coords )
             {
-                int y_diff = img2_coord.first - img1_coord.first;
-                int x_diff = img2_coord.second - img1_coord.second;
-                if ( translations.count({y_diff, x_diff}) ) continue;
-                else
-                {
-                    int overlap{0};
-                    for ( auto& start : img1_coords )
-                    {
-                        if ( img2_coords.count( {start.first + y_diff, start.second + x_diff } ) )
-                        {
-                            overlap++;
-                        }
-                    }
-                    max = std::max(max, overlap);
-                    translations.insert({y_diff, x_diff});
-                }
-
+                max = std::max( max, ++overlap[{ c1.first - c2.first, c1.second - c2.second } ] );
             }
         }
         return max;
