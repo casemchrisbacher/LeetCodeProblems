@@ -85,12 +85,14 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 | [0130-surrounded-regions](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0130-surrounded-regions) |
 | [0200-number-of-islands](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0200-number-of-islands) |
 | [0733-flood-fill](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0733-flood-fill) |
+| [1576-reorder-routes-to-make-all-paths-lead-to-the-city-zero](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/1576-reorder-routes-to-make-all-paths-lead-to-the-city-zero) |
 ## Breadth-First Search
 |  |
 | ------- |
 | [0130-surrounded-regions](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0130-surrounded-regions) |
 | [0200-number-of-islands](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0200-number-of-islands) |
 | [0733-flood-fill](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0733-flood-fill) |
+| [1576-reorder-routes-to-make-all-paths-lead-to-the-city-zero](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/1576-reorder-routes-to-make-all-paths-lead-to-the-city-zero) |
 ## Union Find
 |  |
 | ------- |
@@ -115,4 +117,8 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [1358-find-positive-integer-solution-for-a-given-equation](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/1358-find-positive-integer-solution-for-a-given-equation) |
+## Graph
+|  |
+| ------- |
+| [1576-reorder-routes-to-make-all-paths-lead-to-the-city-zero](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/1576-reorder-routes-to-make-all-paths-lead-to-the-city-zero) |
 <!---LeetCode Topics End-->
