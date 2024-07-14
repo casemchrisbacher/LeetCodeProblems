@@ -100,12 +100,19 @@ A collection of LeetCode questions to ace the coding interview! - Created using 
 |  |
 | ------- |
 | [0035-search-insert-position](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0035-search-insert-position) |
+| [1358-find-positive-integer-solution-for-a-given-equation](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/1358-find-positive-integer-solution-for-a-given-equation) |
 ## Two Pointers
 |  |
 | ------- |
 | [0019-remove-nth-node-from-end-of-list](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0019-remove-nth-node-from-end-of-list) |
+| [1358-find-positive-integer-solution-for-a-given-equation](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/1358-find-positive-integer-solution-for-a-given-equation) |
 ## Math
 |  |
 | ------- |
 | [0048-rotate-image](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/0048-rotate-image) |
+| [1358-find-positive-integer-solution-for-a-given-equation](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/1358-find-positive-integer-solution-for-a-given-equation) |
+## Interactive
+|  |
+| ------- |
+| [1358-find-positive-integer-solution-for-a-given-equation](https://github.com/casemchrisbacher/LeetCodeProblems/tree/master/1358-find-positive-integer-solution-for-a-given-equation) |
 <!---LeetCode Topics End-->
